@@ -1,0 +1,20 @@
+{
+  "name": "task-app",
+  "version": "1.0.0",
+  "description": "A beautiful task list application with TypeScript and SCSS",
+  "scripts": {
+    "build:css": "sass styles.scss styles.css --style=compressed",
+    "build:ts": "tsc",
+    "build": "npm run build:css && npm run build:ts",
+    "watch:css": "sass styles.scss styles.css --watch",
+    "watch:ts": "tsc --watch",
+    "dev": "concurrently \"npm run watch:css\" \"npm run watch:ts\"",
+    "start": "npm run build && npx serve ."
+  },
+  "devDependencies": {
+    "sass": "^1.69.5",
+    "typescript": "^5.3.2",
+    "concurrently": "^8.2.2",
+    "serve": "^14.2.1"
+  }
+}

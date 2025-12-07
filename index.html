@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Script</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <!-- Background effects -->
+    <div class="bg-effects">
+        <div class="bg-grid"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Task<span>.Script( )</span></h1>
+            <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+                <span id="themeIcon">☀️</span>
+            </button>
+        </div>
+
+        <div class="input-card">
+            <div class="input-row">
+                <input id="taskTitle" placeholder="What needs to be done?" autocomplete="off" maxlength="100" />
+                <button class="add-btn" id="addBtn" title="Add task">+</button>
+            </div>
+            <div class="description-row">
+                <input id="taskDescription" class="description-input"
+                    placeholder="Add a brief description (optional)..." autocomplete="off" maxlength="100" />
+                <span class="char-count" id="charCount">0/100</span>
+            </div>
+        </div>
+
+        <!-- To-Do Section -->
+        <div class="section" id="todoSection">
+            <div class="section-header">
+                <span class="section-title todo-title">To Do</span>
+                <span class="section-count" id="todoCountBadge"><span id="todoCount">0</span> tasks</span>
+            </div>
+            <ul id="todoList" class="task-list"></ul>
+            <div id="todoEmpty" class="empty-state">
+                <div class="empty-state-icon">✨</div>
+                <p class="empty-state-text">All caught up! Add a new task above.</p>
+            </div>
+        </div>
+
+        <!-- Completed Section -->
+        <div class="section" id="completedSection" style="display: none">
+            <div class="section-header">
+                <span class="section-title">Done</span>
+                <span class="section-count" id="completedCountBadge"><span id="completedCount">0</span> completed</span>
+            </div>
+            <ul id="completedList" class="task-list"></ul>
+        </div>
+    </div>
+
+    <!-- Sync indicator -->
+    <div class="sync-indicator" id="syncIndicator">
+        <span class="sync-icon">⟳</span>
+        <span class="sync-text">Saving...</span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

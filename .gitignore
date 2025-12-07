@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Compiled output
+styles.css
+styles.css.map
+app.js
+app.js.map
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# package-lock
+package-lock.json
