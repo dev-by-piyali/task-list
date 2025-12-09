@@ -18,15 +18,13 @@ Here's a quick look at the Task.Script() -
 
 ### Desktop Preview:
 
-<video width="700" controls>
-    <source src="assets/task-list-desktop.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/4f66159b-9ec6-432d-a469-645c152f33df
+
 
 ### Mobile Preview:
 
-<img width="350" src="assets/task-list-mobile-dark.png" alt="Task.Script mobile - dark theme">
-<img width="350" src="assets/task-list-mobile-light.png" alt="Task.Script mobile - light theme">
+<img width="350" alt="task-list-mobile-light" src="https://github.com/user-attachments/assets/97f8a182-43d5-4b16-b477-fa34aa905039" />
+<img width="350" alt="task-list-mobile-dark" src="https://github.com/user-attachments/assets/9ffabc98-4081-4237-97b6-1379ab3489bd" />
 
 ## Getting Started
 
