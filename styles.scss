@@ -1,7 +1,4 @@
-// ============================================
-// VARIABLES & MAPS
-// ============================================
-
+// main font
 $font-primary: 'Segoe UI',
   -apple-system,
   BlinkMacSystemFont,
@@ -9,12 +6,11 @@ $font-primary: 'Segoe UI',
   sans-serif;
 $transition-speed: 0.3s;
 
-$radii: (
-  sm: 8px,
-  md: 14px,
-  lg: 16px,
-  xl: 20px
-);
+// border radius sizes
+$radius-sm: 8px;
+$radius-md: 14px;
+$radius-lg: 16px;
+$radius-xl: 20px;
 
 $themes: (
   dark: (bg-primary: #0c0a14,
@@ -67,13 +63,27 @@ $themes: (
     drag-bg: rgba(139, 92, 246, 0.08))
 );
 
-// ============================================
-// FUNCTIONS & MIXINS
-// ============================================
-
+// get radius value
 @function radius($size) {
-  @return map-get($radii, $size);
+  @if $size ==sm {
+    @return $radius-sm;
+  }
+
+  @else if $size ==md {
+    @return $radius-md;
+  }
+
+  @else if $size ==lg {
+    @return $radius-lg;
+  }
+
+  @else if $size ==xl {
+    @return $radius-xl;
+  }
+
+  @return $radius-md; // default
 }
+
 
 @mixin flex($justify: flex-start, $align: stretch, $direction: row, $gap: 0) {
   display: flex;
@@ -143,15 +153,13 @@ $themes: (
   height: 100%;
 }
 
-// ============================================
-// THEME GENERATION
-// ============================================
-
+// css variables
 :root {
   --font-primary: #{$font-primary};
   --transition-speed: #{$transition-speed};
 }
 
+// generate theme variables
 @each $theme-name, $colors in $themes {
   [data-theme='#{$theme-name}'] {
     @each $key, $value in $colors {
@@ -160,10 +168,7 @@ $themes: (
   }
 }
 
-// ============================================
-// ANIMATIONS
-// ============================================
-
+// keyframe animations
 @keyframes float {
 
   0%,
@@ -307,10 +312,7 @@ $themes: (
   }
 }
 
-// ============================================
-// RESET & BASE
-// ============================================
-
+// reset
 * {
   margin: 0;
   padding: 0;
@@ -331,10 +333,7 @@ body {
   overflow-x: hidden;
 }
 
-// ============================================
-// BACKGROUND EFFECTS
-// ============================================
-
+// background effects
 .bg-effects {
   position: fixed;
   inset: 0;
@@ -356,41 +355,34 @@ body {
     filter: blur(80px);
     animation: float 20s ease-in-out infinite;
 
-    @each $i,
-    $config in (1: (500px,
-        var(--orb-1),
-        -150px auto auto -100px,
-        0s),
-      2: (400px,
-        var(--orb-2),
-        auto auto -100px -100px,
-        -7s),
-      3: (300px,
-        var(--orb-3),
-        50% auto auto 50%,
-        -14s)) {
-      &-#{$i} {
-        @include size(nth($config, 1));
-        background: nth($config, 2);
-        $pos: nth($config, 3);
-        top: nth($pos, 1);
-        right: nth($pos, 2);
-        bottom: nth($pos, 3);
-        left: nth($pos, 4);
-        animation-delay: nth($config, 4);
+    &-1 {
+      @include size(500px);
+      background: var(--orb-1);
+      top: -150px;
+      left: -100px;
+      animation-delay: 0s;
+    }
 
-        @if $i ==3 {
-          transform: translate(-50%, -50%);
-        }
-      }
+    &-2 {
+      @include size(400px);
+      background: var(--orb-2);
+      bottom: -100px;
+      right: -100px;
+      animation-delay: -7s;
+    }
+
+    &-3 {
+      @include size(300px);
+      background: var(--orb-3);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: -14s;
     }
   }
 }
 
-// ============================================
-// LAYOUT
-// ============================================
-
+// main container
 .container {
   width: 100%;
   max-width: 50%;
@@ -418,10 +410,7 @@ body {
   }
 }
 
-// ============================================
-// COMPONENTS
-// ============================================
-
+// theme switcher button
 .theme-toggle {
   @include size(50px);
   @include flex(center, center);
@@ -522,10 +511,7 @@ body {
   }
 }
 
-// ============================================
-// SECTIONS
-// ============================================
-
+// section wrapper
 .section {
   margin-bottom: 28px;
   animation: fadeInUp 0.6s ease-out 0.3s both;
@@ -568,10 +554,7 @@ body {
   }
 }
 
-// ============================================
-// TASK LIST
-// ============================================
-
+// todo list
 .task-list {
   @include flex($direction: column, $gap: 10px);
   list-style: none;
@@ -652,10 +635,7 @@ body {
   }
 }
 
-// ============================================
-// TASK ELEMENTS
-// ============================================
-
+// task content wrapper
 .task-content {
   @include flex($direction: column, $gap: 4px);
   flex: 1;
@@ -749,10 +729,7 @@ body {
   color: var(--accent-primary);
 }
 
-// ============================================
-// EDIT MODE
-// ============================================
-
+// editing inputs
 .edit-input {
   flex: 1;
   padding: 8px 14px;
@@ -775,10 +752,7 @@ body {
   }
 }
 
-// ============================================
-// STATES
-// ============================================
-
+// empty state message
 .empty-state {
   text-align: center;
   padding: 40px 24px;
@@ -849,12 +823,7 @@ body {
   }
 }
 
-// ============================================
-// RESPONSIVE
-// ============================================
-
-
-
+// responsiveness
 @media (max-width: 768px) {
   body {
     padding: 24px 16px;
@@ -863,6 +832,7 @@ body {
   .container {
     max-width: 80%;
 
+    // smaller phones
     @media (max-width: 450px) {
       max-width: 100%;
     }
